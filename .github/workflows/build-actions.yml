@@ -20,7 +20,7 @@ jobs:
               run : |
                   TAG=`echo ${{github.ref}} | awk 'BEGIN { FS = "/" } ; { print $3 }'`
                   echo "::set-output name=tag::$TAG"
-                  echo "::set-output name=latest_tag::$(git tag --sort=-v:refname | head -n1)"
+                  echo "::set-output name=latest_tag::$( git tag --sort=-v:refname | head -n 1 )"
 
             - name: Output Container
               run: |
