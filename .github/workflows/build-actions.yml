@@ -9,9 +9,6 @@ on:
 jobs:
     build-images:
         runs-on: ubuntu-latest
-        strategy:
-            matrix:
-                container: [cake, cron, node]
         steps:
             - uses: actions/checkout@v2
               name: Checkout Code
