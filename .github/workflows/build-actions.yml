@@ -20,7 +20,9 @@ jobs:
               run : |
                   TAG=`echo ${{github.ref}} | awk 'BEGIN { FS = "/" } ; { print $3 }'`
                   echo "::set-output name=tag::$TAG"
+                  echo "::set-output name=latest_tag::(git tag --sort=-v:refname | HEAD -n 1)"
 
             - name: Output Container
               run: |
                   echo ${{ steps.docker-tag.outputs.tag }}
+                  echo ${{ steps.docker-tag.outputs.latest_tag }}
