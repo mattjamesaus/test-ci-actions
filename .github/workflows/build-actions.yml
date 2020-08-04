@@ -19,7 +19,7 @@ jobs:
               id: docker-tag
               run : |
                   TAG=`echo ${{github.ref}} | awk 'BEGIN { FS = "/" } ; { print $3 }'`
-                  LATEST_TAG="git tag --sort=-v:refname | head -n1"
+                  LATEST_TAG="$(git tag --sort=-v:refname | head -n1)"
                   echo $LATEST_TAG
                   echo "::set-output name=tag::$TAG"
                   echo "::set-output name=latest_tag::$LATEST_TAG"
